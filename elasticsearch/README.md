@@ -1,4 +1,5 @@
 # 911 Calls avec ElasticSearch
+Chloé Guilbaud & Maël Mainchain
 
 ## Import du jeu de données
 
@@ -21,8 +22,25 @@ GET <nom de votre index>/_count
 
 À vous de jouer ! Écrivez les requêtes ElasticSearch permettant de résoudre les problèmes posés.
 
+### Importer les données depuis le CSV
 ```
-TODO : ajouter les requêtes ElasticSearch ici
+node import.js
+```
+
+### Compter le nombre d'appels autour de Lansdale dans un rayon de 500 mètres
+```
+```
+
+### Compter le nombre d'appels par catégorie
+```
+```
+
+### Trouver les 3 mois ayant comptabilisés le plus d'appels
+```
+```
+
+### Trouver le top 3 des villes avec le plus d'appels pour overdose
+```
 ```
 
 ## Kibana

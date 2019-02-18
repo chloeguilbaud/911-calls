@@ -27,7 +27,6 @@ fs.createReadStream('../911.csv')
             date: data.timeStamp,
             quartier: data.twp,
             adresse: data.addr
-            //utype: data.title.substr(0, data.title.indexOf(":"))
         });
     })
     .on('end', () => {
@@ -43,7 +42,7 @@ fs.createReadStream('../911.csv')
 function createBulkInsertQuery(urgences) {
     const body = urgences.reduce((acc, urgence) => {
         const { latitude, longitude, description, codepostal, titre, date, quartier, adresse } = urgence;
-        acc.push({ index: { _index: 'urgencedb', _type: 'urgence', _id: urgence.date + urgence.latitude + urgence.longitude} });
+        acc.push({ index: { _index: 'urgencedb', _type: 'urgence'} });
         acc.push({ latitude, longitude, description, codepostal, titre, date, quartier, adresse });
         return acc
     }, []);
