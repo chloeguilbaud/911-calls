@@ -137,6 +137,34 @@ Les résultats obtenus sont :
 
 
 ### Trouver les 3 mois ayant comptabilisés le plus d'appels
+
+L'import de données est d'abord mit à jour et le champs `timestamp` est ajouté au format Date : 
+```
+timestamp: new Date(data.timeStamp)
+```
+
+L'option d'aggrégation `date_histogram` est utilisé et la requête suivante peut être lancée dans la console Kibana :
+```
+POST urgencedb/urgence/_search
+{
+    "size": 0,
+    "aggs" : {
+        "monthsWithTheMostCalls" : {
+            "date_histogram": {
+                "field": "timestamp",
+                "interval": "month",
+                "format": "yyyy-MM",
+                "order": {
+                    "_count": "desc"
+                },
+                "time_zone": "Europe/Paris"
+            }
+        }
+    }
+}
+```
+
+La commande suivante permet également son excusion en ligne de commande :
 ```
 node most_called_months.js
 ```
@@ -146,6 +174,7 @@ Le résultat obtenu est :
 | 01/2016 | 10/2016 | 12/2016 |
 | ------- | ------- | ------- |
 | 13096   | 12502   | 12162   |
+
 
 ### Trouver le top 3 des villes avec le plus d'appels pour overdose
 ```
