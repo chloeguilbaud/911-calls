@@ -29,6 +29,10 @@ node import.js
 
 ### Compter le nombre d'appels autour de Lansdale dans un rayon de 500 mètres
 
+Coordonnées GPS du quartier de Lansdale, PA, USA :
+- Latitude : 40.241493
+- Longitude : -75.283783
+
 Un mapping est d'abord effectué dans au moment de l'import.
 ```
 esClient.indices.create({index: 'urgencedb', body: {
@@ -46,7 +50,7 @@ esClient.indices.create({index: 'urgencedb', body: {
 });
 ```
 
-La requête suivante peut être lancée dans la console Kibana : 
+Les requêtes suivantes peuvent être lancées dans la console Kibana : 
 ```
 GET urgencedb/urgence/_search
 {
@@ -80,20 +84,78 @@ Le résultat obtenu est de 717.
 ### Compter le nombre d'appels par catégorie
 
 La requête suivante peut être lancée dans la console Kibana :
+- pour EMS
+```
+GET urgencedb/urgence/_search
+{
+    "query": {
+        "wildcard": {
+            "titre.keyword": {
+                "value": "EMS*"
+            }
+        }
+    }
+}
+```
+- pour Fire
+```
+GET urgencedb/urgence/_search
+{
+    "query": {
+        "wildcard": {
+            "titre.keyword": {
+                "value": "Fire*"
+            }
+        }
+    }
+}
+```
+- pour Traffic
+```
+GET urgencedb/urgence/_search
+{
+    "query": {
+        "wildcard": {
+            "titre.keyword": {
+                "value": "Traffic*"
+            }
+        }
+    }
+}
+```
 
+La commande suivante permet également son excusion en ligne de commande : 
 ```
 node count_calls_by_categories.js
 ```
+
+Les résultats obtenus sont : 
+
+| EMS   | Fire  | Traffic |
+| ----- | ----- | ------- |
+| 75589 | 23056 | 54549   |
+
 
 ### Trouver les 3 mois ayant comptabilisés le plus d'appels
 ```
 node most_called_months.js
 ```
 
+Le résultat obtenu est :
+
+| 01/2016 | 10/2016 | 12/2016 |
+| ------- | ------- | ------- |
+| 13096   | 12502   | 12162   |
+
 ### Trouver le top 3 des villes avec le plus d'appels pour overdose
 ```
 // TODO
 ```
+Le résultat obtenu est :
+
+| POTTSTOWN | NORRISTOWN | UPPER MORELAND |
+| --------- | ---------- | -------------- |
+| 203       | 180        | 110            |
 
 ## Kibana
 
