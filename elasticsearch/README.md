@@ -28,19 +28,49 @@ node import.js
 ```
 
 ### Compter le nombre d'appels autour de Lansdale dans un rayon de 500 mètres
+La requête suivante peut être lancée dans la console Kibana : 
 ```
+GET urgencedb/urgence/_search
+{
+    "query": {
+        "bool" : {
+            "must" : {
+                "match_all" : {}
+            },
+            "filter" : {
+                "geo_distance" : {
+                    "distance" : "500m",
+                    "location" : {
+                        "lat" : 40.241493,
+                        "lon": -75.283783
+                    }
+                }
+            }
+        }
+    }
+}
 ```
+La commande suivante permet également son excusion en ligne de commande : 
+```
+node lansdale_calls.js
+```
+
+Le résultat obtenu est 
+
 
 ### Compter le nombre d'appels par catégorie
 ```
+node count_calls_by_categories.js
 ```
 
 ### Trouver les 3 mois ayant comptabilisés le plus d'appels
 ```
+node most_called_months.js
 ```
 
 ### Trouver le top 3 des villes avec le plus d'appels pour overdose
 ```
+// TODO
 ```
 
 ## Kibana
