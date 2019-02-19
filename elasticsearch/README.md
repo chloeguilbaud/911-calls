@@ -177,14 +177,43 @@ Le résultat obtenu est :
 
 
 ### Trouver le top 3 des villes avec le plus d'appels pour overdose
+
+Il faut d'abord récupérer tous les appels contenant le mot clé "OVERDOSE",
+afin de récupérer les quartiers ayant comptabilisé le plus d'appels pour overdose, 
+Elle sont ensuite aggrégées par `twp`, champs correspondant au quartier. 
+La requête suivante peut être lancée dans la console Kibana :
 ```
-// TODO
+POST urgencedb/urgence/_search
+{
+    "size": 0,
+    "query" : {
+    "wildcard" : {
+      "titre.keyword": {
+        "value" : "*OVERDOSE"
+      }
+    }
+  },
+  "aggs": {
+    "overdoseCities" : {
+      "terms" : {
+        "field" : "quartier.keyword"
+      }
+    }
+  }
+}
 ```
+
+La commande suivante permet également son excusion en ligne de commande :
+```
+node overdose_cities.js
+```
+
 Le résultat obtenu est :
 
 | POTTSTOWN | NORRISTOWN | UPPER MORELAND |
 | --------- | ---------- | -------------- |
 | 203       | 180        | 110            |
+
 
 ## Kibana
 
