@@ -28,6 +28,24 @@ node import.js
 ```
 
 ### Compter le nombre d'appels autour de Lansdale dans un rayon de 500 mètres
+
+Un mapping est d'abord effectué dans au moment de l'import.
+```
+esClient.indices.create({index: 'urgencedb', body: {
+        "mappings" : {
+            "urgence": {
+                "properties": {
+                    "location": {
+                        "type": "geo_point"
+                    }
+                }
+            }
+        }}}, (err, resp) => {
+    if (err)
+        console.trace(err.message);
+});
+```
+
 La requête suivante peut être lancée dans la console Kibana : 
 ```
 GET urgencedb/urgence/_search
@@ -50,15 +68,19 @@ GET urgencedb/urgence/_search
     }
 }
 ```
+
 La commande suivante permet également son excusion en ligne de commande : 
 ```
 node lansdale_calls.js
 ```
 
-Le résultat obtenu est 
+Le résultat obtenu est de 717.
 
 
 ### Compter le nombre d'appels par catégorie
+
+La requête suivante peut être lancée dans la console Kibana :
+
 ```
 node count_calls_by_categories.js
 ```
