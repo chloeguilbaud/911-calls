@@ -55,7 +55,7 @@ db.calls.find(
   {
     coordonnees: { 
       $near : {
-        $geometry: { type: "Point", coordonnees: [-75.283783, 40.241493 ]}, $maxDistance: 500
+        $geometry: { type: "Point", coordinates: [-75.283783, 40.241493 ]}, $maxDistance: 500
       }
     }
   }
