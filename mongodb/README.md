@@ -1,5 +1,7 @@
 # 911 Calls avec MongoDB
 
+Maël MAINCHAIN & Chloé GUILBAUD
+
 ## Import du jeu de données
 
 Pour importer le jeu de données, complétez le script `import.js` (cherchez le `TODO` dans le code :wink:).
