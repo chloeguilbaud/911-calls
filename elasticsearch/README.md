@@ -220,11 +220,11 @@ Le résultat obtenu est :
 Dans Kibana, créez un dashboard qui permet de visualiser :
 
 * Une carte de l'ensemble des appels
-![](images/CarteEnsembleAppels.png)
+![](images/carte-ensemble-appels.png)
 * Un histogramme des appels répartis par catégories
-![](images/HistogrammeAppelsParCategories.png)
+![](images/histogramme-appels-par-categories.png)
 * Un Pie chart réparti par bimestre, par catégories et par canton (township)
-![](images/ParBimestreParCatégoriesParCanton.png)
+![](images/par-bimestre-par-categories-par-canton.png)
 
 Pour nous permettre d'évaluer votre travail, ajoutez une capture d'écran du dashboard dans ce répertoire [images](images).
 ![](images/Dashboard.png)
