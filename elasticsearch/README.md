@@ -179,8 +179,8 @@ Le résultat obtenu est :
 ### Trouver le top 3 des villes avec le plus d'appels pour overdose
 
 Il faut d'abord récupérer tous les appels contenant le mot clé "OVERDOSE",
-afin de récupérer les quartiers ayant comptabilisé le plus d'appels pour overdose, 
-Elle sont ensuite aggrégées par `twp`, champs correspondant au quartier. 
+afin de récupérer les quartiers ayant comptabilisé le plus d'appels overdose, 
+Le résultat de la recherche est ensuite aggrégés par `quartier`. 
 La requête suivante peut être lancée dans la console Kibana :
 ```
 POST urgencedb/urgence/_search
